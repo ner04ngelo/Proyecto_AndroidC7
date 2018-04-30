@@ -3,11 +3,13 @@ package com.example.user.nicadepartments.Model;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+
 /**
  * Created by USER on 2/4/2018.
  */
 
-public class DepartmentModel {
+public class DepartmentModel  extends RealmObject {
     @SerializedName("department_name")
     private String departmentname;
 

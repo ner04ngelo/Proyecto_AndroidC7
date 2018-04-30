@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.user.nicadepartments.MainActivity;
 import com.example.user.nicadepartments.R;
 
 import gr.net.maroulis.library.EasySplashScreen;
@@ -25,12 +24,13 @@ public class SplashScreen extends AppCompatActivity {
                 .withLogo(R.drawable.logo)
                 .withAfterLogoText("Bienvenido!!")
                 .withFooterText("Copyright 2018")
-                .withBeforeLogoText("Chamos Devolopers");
+                .withBeforeLogoText("Chamos Developers");
 
 
         config.getAfterLogoTextView().setTextColor(Color.BLACK);
         config.getAfterLogoTextView().setTextSize(18);
         config.getFooterTextView().setTextColor(android.graphics.Color.BLACK);
+        config.getFooterTextView().setTextSize(16);
         config.getBeforeLogoTextView().setTextColor(android.graphics.Color.BLACK);
         config.getBeforeLogoTextView().setTextSize(18);
         /*config.getLogo().setMaxHeight(400);

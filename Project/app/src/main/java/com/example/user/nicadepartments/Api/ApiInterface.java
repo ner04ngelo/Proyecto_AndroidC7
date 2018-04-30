@@ -9,6 +9,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 /**
@@ -20,8 +21,11 @@ public interface ApiInterface {
     @GET("departments")
     Call<List<DepartmentModel>> getDepartment();
 
-   /* @POST("departments")
-    Call<DepartmentModel> createDepartment(@Body DepartmentModel departmentModel);*/
+   @POST("departments")
+    Call<DepartmentModel> createDepartment(@Body DepartmentModel departmentModel);
+
+   @PUT("departments/{id}")
+    Call<DepartmentModel> updateDepartment(@Path("id")int id,@Body DepartmentModel departmentModel);
 
     @DELETE("departments/{id}")
     Call<DepartmentModel> deleteDepartment (@Path("id")int id);

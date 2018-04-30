@@ -3,4 +3,7 @@
     <string name="action_settings">Settings</string>
     <string name="newDepartment">Nuevo Departamento</string>
     <string name="empty">NO HAY ELEMENTOS</string>
+    <string name="newdepartment">Nombre del Departamento</string>
+    <string name="add">Agregar</string>
+    <string name="departmentname">Nuevo Departamento</string>
 </resources>
