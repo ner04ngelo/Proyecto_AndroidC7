@@ -1,6 +1,7 @@
 package com.example.user.nicadepartments.Api;
 
 import com.example.user.nicadepartments.Model.DepartmentModel;
+import com.example.user.nicadepartments.Model.MunicipalityModel;
 
 import java.util.List;
 
@@ -29,5 +30,21 @@ public interface ApiInterface {
 
     @DELETE("departments/{id}")
     Call<DepartmentModel> deleteDepartment (@Path("id")int id);
+
+
+   ///@TODO Municipios
+
+    @GET("departments/{id}/municipalities")
+    Call<List<MunicipalityModel>> getMunicipality (@Path("id")int id);
+
+    @POST("departments/{id}/municipalities")
+    Call<MunicipalityModel> createMunicipality(@Path("id") int id,@Body MunicipalityModel municipalityModel );
+
+    @PUT("departments/{idDepartment}/municipalities/{id}")
+    Call<MunicipalityModel> updateMuncipality(@Path("idDepartment")int idDepartment,@Path("id") int id,@Body MunicipalityModel municipalityModel);
+
+    @DELETE("departments/{idDepartment}/municipalities/{id}")
+    Call<MunicipalityModel> deleteMunicipality (@Path("idDepartment")int idDepartment, @Path("id")int id);
+
 
 }

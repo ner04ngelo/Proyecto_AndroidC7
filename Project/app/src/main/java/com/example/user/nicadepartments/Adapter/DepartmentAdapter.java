@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,7 +18,8 @@ import android.widget.TextView;
 import com.example.user.nicadepartments.Api.Api;
 import com.example.user.nicadepartments.Model.DepartmentModel;
 import com.example.user.nicadepartments.R;
-import com.example.user.nicadepartments.Views.UpdateDepartmentActivity;
+
+import com.example.user.nicadepartments.Views.municipality_activity;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static android.support.v4.content.ContextCompat.startActivity;
 
 /**
  * Created by USER on 23/4/2018.
@@ -41,6 +45,9 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
     private Dialog dialDepartment;
     private TextView label;
     //////
+
+
+
 
     public DepartmentAdapter(List<DepartmentModel> departments) {
         this.departments = departments;
@@ -92,8 +99,9 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
                             updateData(newDepart.getText().toString(),DepartmentModel.getId_department());
                             updateDataRealm(newDepart.getText().toString(),DepartmentModel.getId_department());
                             dialDepartment.dismiss();
-                            notifyItemRemoved(position);
-                            notifyItemRangeChanged(position, departments.size());
+                           /* notifyItemRemoved(position);
+                            notifyItemRangeChanged(position, departments.size());*/
+                           notifyDataSetChanged();
                         }else{
                             updateDataRealm(newDepart.getText().toString(),DepartmentModel.getId_department());
                             dialDepartment.dismiss();
@@ -103,6 +111,19 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
 
                     }
                 });
+
+
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(),municipality_activity.class);
+                Bundle bundle = new Bundle();
+                bundle.putInt("ID",DepartmentModel.getId_department());
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
 
@@ -118,13 +139,15 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
 
         Button edit;
         Button delete;
-        public ViewHolder(View itemView) {
+        public ViewHolder(final View itemView) {
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
 
             edit = itemView.findViewById(R.id.button_edit);
             delete = itemView.findViewById(R.id.button_delete);
+
+
         }
     }
 

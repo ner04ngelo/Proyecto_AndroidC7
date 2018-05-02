@@ -27,7 +27,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             >
         </activity>
-        <activity android:name=".municipality_activity"></activity>
+        <activity android:name=".Views.municipality_activity"></activity>
     </application>
 
 </manifest>
