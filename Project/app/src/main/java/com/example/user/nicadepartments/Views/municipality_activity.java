@@ -75,6 +75,7 @@ public class municipality_activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_municipality);
 
+        getSupportActionBar().setTitle("Municipios");
         /*toolbar = findViewById(R.id.toolbarMunicipality);
         setSupportActionBar(toolbar);*/
 
@@ -107,6 +108,7 @@ public class municipality_activity extends AppCompatActivity {
                 dialDepartment.setContentView(R.layout.dialog_conten);
                 dialDepartment.setTitle("Nuevo Municipio");
                 newDepart = dialDepartment.findViewById(R.id.newDepartment);
+                newDepart.setHint("Nombre del municipio");
                 addRecord = dialDepartment.findViewById(R.id.addRecord);
                 label = dialDepartment.findViewById(R.id.label);
                 label.setText("Nuevo Municipio");

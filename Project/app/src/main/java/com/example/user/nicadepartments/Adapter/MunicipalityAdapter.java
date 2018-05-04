@@ -1,7 +1,9 @@
 package com.example.user.nicadepartments.Adapter;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -64,8 +66,27 @@ public class MunicipalityAdapter extends RecyclerView.Adapter<MunicipalityAdapte
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteData(municipalityModel.getIdDpeartment(),municipalityModel.getId());
-                refreshAdapter(position);
+                new AlertDialog.Builder(context)
+                        .setTitle("Advertencia")
+                        .setMessage("¿Seguro que quiere borrar este elemento?")
+                        .setIcon(R.mipmap.ic_logo_laucher)
+                        .setPositiveButton("Sí",
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        deleteData(municipalityModel.getIdDpeartment(),municipalityModel.getId());
+                                        refreshAdapter(position);
+                                        dialog.cancel();
+                                    }
+                                })
+                        .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        }).show();
+
+
             }
         });
 
@@ -77,6 +98,7 @@ public class MunicipalityAdapter extends RecyclerView.Adapter<MunicipalityAdapte
                 dialMunicipali.setContentView(R.layout.dialog_conten);
                 dialMunicipali.setTitle("Modificar Municipio");
                 newMunicipali = dialMunicipali.findViewById(R.id.newDepartment);
+                newMunicipali.setHint("Nombre del Municipio");
                 addRecord = dialMunicipali.findViewById(R.id.addRecord);
                 label = dialMunicipali.findViewById(R.id.label);
                 label.setText("Modificar Municipio");

@@ -11,7 +11,7 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/municpalityRecycler_view"
         android:layout_width="match_parent"
-        android:layout_height="550dp"
+        android:layout_height="560dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

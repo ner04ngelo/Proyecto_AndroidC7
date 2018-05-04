@@ -1,7 +1,9 @@
 package com.example.user.nicadepartments.Adapter;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -70,15 +72,34 @@ public class DepartmentAdapter extends RecyclerView.Adapter<DepartmentAdapter.Vi
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                deleteData(DepartmentModel.getId_department());
-                refreshAdapter(position);
+                new AlertDialog.Builder(context)
+                        .setTitle("Advertencia")
+                        .setMessage("¿Seguro que quiere borrar este elemento?")
+                        .setIcon(R.mipmap.ic_logo_laucher)
+                        .setPositiveButton("Sí",
+                                new DialogInterface.OnClickListener() {
+
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        deleteData(DepartmentModel.getId_department());
+                                        refreshAdapter(position);
+                                        dialog.cancel();
+                                    }
+                                })
+                        .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                dialog.cancel();
+                            }
+                        }).show();
+
             }
         });
 
         holder.edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+///Todo ese codigo es el Dialog que uso para modficar el registro
 
                 dialDepartment= new Dialog(context);
                 dialDepartment.setContentView(R.layout.dialog_conten);
